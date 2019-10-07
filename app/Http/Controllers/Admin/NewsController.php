@@ -70,7 +70,9 @@ class NewsController extends Controller
         $this->validate($request, News::$rules);
         // News Modelからデータを取得する
         $news = News::find($request->id);
+
         // 送信されてきたフォームデータを格納する
+
         $news_form = $request->all();
         if (isset($news_form['image'])) {
             $path = $request->file('image')->store('public/image');
@@ -80,10 +82,11 @@ class NewsController extends Controller
             $news->image_path = null;
             unset($news_form['remove']);
         }
+
         unset($news_form['_token']);
+
         // 該当するデータを上書きして保存する
         $news->fill($news_form)->save();
-
         $history = new History;
         $history->news_id = $news->id;
         $history->edited_at = Carbon::now();
@@ -91,6 +94,8 @@ class NewsController extends Controller
 
         return redirect('admin/news');
     }
+
+
 
     // 以下を追記　　
     public function delete(Request $request)
