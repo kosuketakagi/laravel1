@@ -4,12 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Profilehistories extends Model
+
+
+class Profile_History extends Model
 {
     protected $guarded = array('id');
 
     public static $rules = array(
-        'profiles_id' => 'required',
+        'profile_id' => 'required',
         'edited_at' => 'required',
     );
+
+
+    protected $table = 'profile_histories';
+
+
 }

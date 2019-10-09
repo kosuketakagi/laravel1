@@ -27,12 +27,12 @@ class NewsController extends Controller
         $form = $request->all();
 
         // formに画像があれば、保存する
-        if (!empty($form['image'])) {
-            $path = $request->file('image')->store('public/image');
-            $news->image_path = basename($path);
-        } else {
-            $news->image_path = null;
-        }
+//        if (!empty($form['image'])) {
+//            $path = $request->file('image')->store('public/image');
+//            $news->image_path = basename($path);
+//        } else {
+//            $news->image_path = null;
+//        }
 
         unset($form['_token']);
         unset($form['image']);
@@ -74,6 +74,8 @@ class NewsController extends Controller
         // 送信されてきたフォームデータを格納する
 
         $news_form = $request->all();
+
+
         if (isset($news_form['image'])) {
             $path = $request->file('image')->store('public/image');
             $news->image_path = basename($path);
@@ -87,6 +89,8 @@ class NewsController extends Controller
 
         // 該当するデータを上書きして保存する
         $news->fill($news_form)->save();
+
+
         $history = new History;
         $history->news_id = $news->id;
         $history->edited_at = Carbon::now();

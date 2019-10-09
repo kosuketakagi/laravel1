@@ -26,6 +26,9 @@
                             <textarea class="form-control" name="body" rows="20">{{ $news_form->body }}</textarea>
                         </div>
                     </div>
+
+
+
                     <div class="form-group row">
                         <label class="col-md-2" for="image">画像</label>
                         <div class="col-md-10">
@@ -40,6 +43,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="form-group row">
                         <div class="col-md-10">
                             <input type="hidden" name="id" value="{{ $news_form->id }}">
@@ -48,6 +53,8 @@
                         </div>
                     </div>
                 </form>
+
+
                 {{-- 以下を追記　--}}
                 <div class="row mt-5">
                     <div class="col-md-4 mx-auto">
